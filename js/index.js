@@ -107,7 +107,7 @@ var app = {
 		  data: { token: result }
 		})
 		  .done(function( msg ) {
-			alert( "Data Saved: " + msg );
+			alert( "Token Sent");
 		  });
     },
     errorHandler:function(error) {
