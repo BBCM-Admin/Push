@@ -55,4 +55,5 @@
 	</feature>
 	
     <access origin="http://127.0.0.1*" />
+	<access origin="http://tops.tuthill.com" />
 </widget>
