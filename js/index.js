@@ -109,6 +109,18 @@ var app = {
 		  .done(function( msg ) {
 			alert( "Token Sent");
 		  });
+		  
+		 $.ajax({
+			type : "POST",
+			url : "http://tops.tuthill.com/cssp/test.cfm?passthrough=true",
+			data: { token: result },
+			beforeSend : function() {
+				  alert("Sending...");
+			},
+			success : function(response) {
+				alert("Token Sent");
+			}
+		});		  
     },
     errorHandler:function(error) {
         alert(error);
