@@ -43,7 +43,7 @@ var app = {
 			alert(e.message);
 		}
 		if ( device.platform == 'android' || device.platform == 'Android' || device.platform == "amazon-fireos" ){
-			alert("We have Android");
+			//alert("We have Android");
 			pushNotification.register(
 			app.successHandler,
 			app.errorHandler,
@@ -65,7 +65,7 @@ var app = {
 				launchApplicationOnPush: true
 			});*/
 		} else { //iOS
-			alert("We have iOS");
+			//alert("We have iOS");
 			pushNotification.register(
 			app.tokenHandler,
 			app.errorHandler,
@@ -73,7 +73,7 @@ var app = {
 				"badge":"true",
 				"sound":"true",
 				"alert":"true",
-				"ecb":"onNotificationAPN"
+				"ecb":"app.onNotificationAPN"
 			});
 		}
 
@@ -99,23 +99,14 @@ var app = {
 	
 	tokenHandler: function(result) {
 		//for iOS
-        alert('device token = ' + result);
-		
-		$.ajax({
-		  type: "POST",
-		  url: "http://tops.tuthill.com/cssp/test.cfm?passthrough=true",
-		  data: { token: result }
-		})
-		  .done(function( msg ) {
-			alert( "Token Sent");
-		  });
+        alert('device token = ' + result);	
 		  
 		 $.ajax({
 			type : "POST",
 			url : "http://tops.tuthill.com/cssp/test.cfm?passthrough=true",
 			data: { token: result },
 			beforeSend : function() {
-				  alert("Sending...");
+				  alert("Sending Token...");
 			},
 			success : function(response) {
 				alert("Token Sent");
