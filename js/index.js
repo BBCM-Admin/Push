@@ -163,18 +163,18 @@ var app = {
 	
 	if( /(android)/i.test(navigator.userAgent) ) { 
 		admobid = { // for Android
-			banner: 'ca-app-pub-5207971588252467/5956070865',
-			interstitial: 'ca-app-pub-6869992474017983/5956070865'
+			banner: 'pub-5207971588252467/5956070865',
+			interstitial: 'pub-6869992474017983/5956070865'
 		};
 	} else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
 		admobid = { // for iOS
-			banner: 'ca-app-pub-5207971588252467/5956070865',
-			interstitial: 'ca-app-pub-5207971588252467/5956070865'
+			banner: 'pub-5207971588252467/5956070865',
+			interstitial: 'pub-5207971588252467/5956070865'
 		};
 	} else {
 		admobid = { // for Windows Phone
-			banner: 'ca-app-pub-5207971588252467/5956070865',
-			interstitial: 'ca-app-pub-5207971588252467/5956070865'
+			banner: 'pub-5207971588252467/5956070865',
+			interstitial: 'pub-5207971588252467/5956070865'
 		};
 	}
 	
@@ -195,6 +195,7 @@ var app = {
             // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
         };
         AdMob.setOptions( defaultOptions );
+		alert(admobid.banner);
 		// it will display smart banner at top center, using the default options
 		if(AdMob) AdMob.createBanner( admobid.banner );	
 	}
