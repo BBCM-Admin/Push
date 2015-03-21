@@ -1,4 +1,4 @@
-/*
+/*pub-5207971588252467
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var admobid = {};
 var app = {
     // Application Constructor
     initialize: function() {
@@ -34,6 +35,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+		initAd();
         var pushNotification = window.plugins.pushNotification;
 		
         //pushNotification.register(app.successHandler, app.errorHandler,{"senderID":"363747113879","ecb":"app.onNotificationGCM"});
@@ -158,4 +160,40 @@ var app = {
 			pushNotification.setApplicationIconBadgeNumber(app.successHandler, app.errorHandler, event.badge);
 		}
     }	
+	
+	if( /(android)/i.test(navigator.userAgent) ) { 
+		admobid = { // for Android
+			banner: 'ca-app-pub-5207971588252467/5956070865',
+			interstitial: 'ca-app-pub-6869992474017983/5956070865'
+		};
+	} else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
+		admobid = { // for iOS
+			banner: 'ca-app-pub-5207971588252467/5956070865',
+			interstitial: 'ca-app-pub-5207971588252467/5956070865'
+		};
+	} else {
+		admobid = { // for Windows Phone
+			banner: 'ca-app-pub-5207971588252467/5956070865',
+			interstitial: 'ca-app-pub-5207971588252467/5956070865'
+		};
+	}
+	
+	function initAd(){
+		
+		 var defaultOptions = {
+            // bannerId: admobid.banner,
+            // interstitialId: admobid.interstitial,
+            // adSize: 'SMART_BANNER',
+            // width: integer, // valid when set adSize 'CUSTOM'
+            // height: integer, // valid when set adSize 'CUSTOM'
+            position: AdMob.AD_POSITION.BOTTOM_CENTER,
+            // offsetTopBar: false, // avoid overlapped by status bar, for iOS7+
+            bgColor: 'black', // color name, or '#RRGGBB'
+            // x: integer,		// valid when set position to 0 / POS_XY
+            // y: integer,		// valid when set position to 0 / POS_XY
+            isTesting: true, // set to true, to receiving test ad for testing purpose
+            // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
+        };
+        AdMob.setOptions( defaultOptions );
+	}
 };
