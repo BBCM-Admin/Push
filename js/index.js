@@ -195,5 +195,7 @@ var app = {
             // autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
         };
         AdMob.setOptions( defaultOptions );
+		// it will display smart banner at top center, using the default options
+		if(AdMob) AdMob.createBanner( admobid.banner );	
 	}
 };
